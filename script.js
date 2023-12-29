@@ -50,7 +50,7 @@ url_to_head(paypal_sdk_url + "?client-id=" + client_id + "&enable-funding=venmo&
         },
 
         createOrder: function(data, actions) { //https://developer.paypal.com/docs/api/orders/v2/#orders_create
-            return fetch("http://localhost:3000/create_order", {
+            return fetch("http://localhost:3005/create_order", {
                 method: "post", headers: { "Content-Type": "application/json; charset=utf-8" },
                 body: JSON.stringify({ "intent": intent })
             })
@@ -60,7 +60,7 @@ url_to_head(paypal_sdk_url + "?client-id=" + client_id + "&enable-funding=venmo&
 
         onApprove: function(data, actions) {
             let order_id = data.orderID;
-            return fetch("http://localhost:3000/complete_order", {
+            return fetch("http://localhost:3005/complete_order", {
                 method: "post", headers: { "Content-Type": "application/json; charset=utf-8" },
                 body: JSON.stringify({
                     "intent": intent,
