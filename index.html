@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PPCPP Standard</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/minstyle.io@2.0.1/dist/css/minstyle.io.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-functions.js"></script>
+    <script>
+      // TODO: Replace with your project's config
+      const firebaseConfig = {
+          apiKey: "AIzaSyAaR6fJli8ZScaW688yNhYoF6-VH6tftjk",
+          authDomain: "weekly-winner.firebaseapp.com",
+          projectId: "weekly-winner",
+          storageBucket: "weekly-winner.appspot.com",
+          messagingSenderId: "74891887467",
+          appId: "1:74891887467:web:c2756d34b4604dd8bd022e",
+          measurementId: "G-YEM7CZ9Y3B"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm"></div>
+        <div class="col-sm">
+          <h2 class="ms-text-center">ai-generated NFT Bored Ape</h2>
+          <div class="ms-text-center pb-2">
+            <div class="ms-label ms-large ms-action2 ms-light">$100.00 USD</div>
+          </div>
+          <div id="alerts" class="ms-text-center"></div>
+          <div id="loading" class="spinner-container ms-div-center">
+            <div class="spinner"></div>
+          </div>
+          <div id="content" class="hide">
+            <div class="ms-card ms-fill">
+              <div class="ms-card-content">
+                <img src="https://cdn.discordapp.com/attachments/1060825015681028127/1076385063903694908/rauljr7_3d_e83fed6a-69aa-4a6a-b0ec-928edd57aecf.png" style="width:400px">
+              </div>
+            </div>
+            
+            <div id="payment_options">
+
+
+            </div>
+
+
+          </div>
+        </div>
+        <div class="col-sm"></div>
+      </div>
+    </div>
+  </body>
+</html>
