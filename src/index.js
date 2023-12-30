@@ -108,6 +108,15 @@ app.get('/script.js', (req, res) => {
     res.sendFile(process.cwd() + '/script.js');
 });
 
+app.get('/', (req, res) => {
+    const userID = req.query.userID;
+    const amount = req.query.amount;
+    // Now you can use userID and amount in your server logic
+    // ...
+});
+
+
+
 //PayPal Developer YouTube Video:
 //How to Retrieve an API Access Token (Node.js)
 //https://www.youtube.com/watch?v=HOkkbGSxmp4

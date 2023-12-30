@@ -83,17 +83,21 @@ url_to_head(paypal_sdk_url + "?client-id=" + client_id + "&enable-funding=venmo"
                 //Close out the PayPal buttons that were rendered
                 paypal_buttons.close();
 
-                //const purchaseCompleted = firebase.functions().httpsCallable('purchaseCompleted');
 
+                const url = new URL(window.location.href);
 
+                // Get the userID and amount from the URL's query parameters
+                const userID = url.searchParams.get('userID');
+                const amount = url.searchParams.get('amount');
+                const purchaseCompleted = firebase.functions().httpsCallable('purchaseCompleted');
 
-                // purchaseCompleted({ orderId: order_id, intent: intent })
-                //   .then((result) => {
-                //     console.log(result.data);
-                //   })
-                //   .catch((error) => {
-                //     console.log(error);
-                //   });
+                purchaseCompleted({ userID, amount })
+                  .then((result) => {
+                    console.log(result.data);
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
 
 
 
