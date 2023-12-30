@@ -40,7 +40,7 @@ url_to_head(paypal_sdk_url + "?client-id=" + client_id + "&enable-funding=venmo"
     let alerts = document.getElementById("alerts");
     let paypal_buttons = paypal.Buttons({ // https://developer.paypal.com/sdk/js/reference
         onClick: (data) => { // https://developer.paypal.com/sdk/js/reference/#link-oninitonclick
-            //Custom JS here
+            console.log("CLICKED")
         },
         style: { //https://developer.paypal.com/sdk/js/reference/#link-style
             shape: 'rect',
@@ -50,17 +50,22 @@ url_to_head(paypal_sdk_url + "?client-id=" + client_id + "&enable-funding=venmo"
         },
 
         createOrder: function(data, actions) { //https://developer.paypal.com/docs/api/orders/v2/#orders_create
-            return fetch("http://localhost:3100/create_order", {
+            console.log("GOT TO CREATE")
+            return fetch("http://localhost:3101/create_order", {
                 method: "post", headers: { "Content-Type": "application/json; charset=utf-8" },
                 body: JSON.stringify({ "intent": intent })
             })
             .then((response) => response.json())
-            .then((order) => { return order.id; });
+            .then((order) => { 
+                console.log("ORDER.ID is" + order.id)
+                return order.id; 
+            });
         },
 
         onApprove: function(data, actions) {
+            console.log("GOT TO APPROVE")
             let order_id = data.orderID;
-            return fetch("http://localhost:3100/complete_order", {
+            return fetch("http://localhost:3101/complete_order", {
                 method: "post", headers: { "Content-Type": "application/json; charset=utf-8" },
                 body: JSON.stringify({
                     "intent": intent,

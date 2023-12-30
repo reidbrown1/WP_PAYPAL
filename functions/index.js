@@ -15,8 +15,8 @@ const admin = require('firebase-admin');
 admin.initializeApp();
 exports.purchaseCompleted = functions.https.onCall((data, context) => {
     // Get the order ID and intent from data
-    const orderId = data.orderId;
-    const intent = data.intent;
+    // const orderId = data.orderId;
+    // const intent = data.intent;
   
     // Update a variable in Firebase database
     var db = admin.firestore();
