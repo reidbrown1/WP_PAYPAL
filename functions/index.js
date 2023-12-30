@@ -13,18 +13,20 @@ const logger = require("firebase-functions/logger");
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
-exports.purchaseCompleted = functions.https.onCall((userID, amountPurchased) => {
-    // Get the order ID and intent from data
-    // const orderId = data.orderId;
-    // const intent = data.intent;
-  
-    // Update a variable in Firebase database
+
+exports.purchaseCompleted = functions.https.onCall((data) => {
+    const userID = data.userID;
+    const amountPurchased = data.amount;
+
+    console.log(userID);
+    console.log(amountPurchased);
+
     var db = admin.firestore();
     var docRef = db.collection('users').doc(userID);
     return docRef.update({
       PoolCoins: amountPurchased
     });
-  });
+});
 
 // Create and deploy your first functions
 // https://firebase.google.com/docs/functions/get-started

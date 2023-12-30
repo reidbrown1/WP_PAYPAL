@@ -91,13 +91,13 @@ url_to_head(paypal_sdk_url + "?client-id=" + client_id + "&enable-funding=venmo"
                 const amount = url.searchParams.get('amount');
                 const purchaseCompleted = firebase.functions().httpsCallable('purchaseCompleted');
 
-                purchaseCompleted({ userID, amount })
-                  .then((result) => {
-                    console.log(result.data);
-                  })
-                  .catch((error) => {
-                    console.log(error);
-                  });
+                purchaseCompleted({ userID: userID, amount: amount })
+                    // .then((result) => {
+                    //     console.log(result.data);
+                    // })
+                    // .catch((error) => {
+                    //     console.log(error);
+                    // });
 
 
 
