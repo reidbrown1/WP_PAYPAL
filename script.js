@@ -32,7 +32,7 @@ let alerts = document.getElementById("alerts");
 
 //PayPal Code
 //https://developer.paypal.com/sdk/js/configuration/#link-queryparameters
-url_to_head(paypal_sdk_url + "?client-id=" + client_id + "&enable-funding=venmo&currency=" + currency + "&intent=" + intent)
+url_to_head(paypal_sdk_url + "?client-id=" + client_id + "&enable-funding=venmo" + "&intent=" + intent)
 .then(() => {
     //Handle loading spinner
     document.getElementById("loading").classList.add("hide");
@@ -50,7 +50,7 @@ url_to_head(paypal_sdk_url + "?client-id=" + client_id + "&enable-funding=venmo&
         },
 
         createOrder: function(data, actions) { //https://developer.paypal.com/docs/api/orders/v2/#orders_create
-            return fetch("http://localhost:3005/create_order", {
+            return fetch("http://localhost:2998/create_order", {
                 method: "post", headers: { "Content-Type": "application/json; charset=utf-8" },
                 body: JSON.stringify({ "intent": intent })
             })
@@ -60,7 +60,7 @@ url_to_head(paypal_sdk_url + "?client-id=" + client_id + "&enable-funding=venmo&
 
         onApprove: function(data, actions) {
             let order_id = data.orderID;
-            return fetch("http://localhost:3005/complete_order", {
+            return fetch("http://localhost:2998/complete_order", {
                 method: "post", headers: { "Content-Type": "application/json; charset=utf-8" },
                 body: JSON.stringify({
                     "intent": intent,
@@ -77,14 +77,20 @@ url_to_head(paypal_sdk_url + "?client-id=" + client_id + "&enable-funding=venmo&
                 //Close out the PayPal buttons that were rendered
                 paypal_buttons.close();
 
-                const purchaseCompleted = firebase.functions().httpsCallable('purchaseCompleted');
-                purchaseCompleted({ orderId: order_id, intent: intent })
-                  .then((result) => {
-                    console.log(result.data);
-                  })
-                  .catch((error) => {
-                    console.log(error);
-                  });
+                //const purchaseCompleted = firebase.functions().httpsCallable('purchaseCompleted');
+
+
+
+                // purchaseCompleted({ orderId: order_id, intent: intent })
+                //   .then((result) => {
+                //     console.log(result.data);
+                //   })
+                //   .catch((error) => {
+                //     console.log(error);
+                //   });
+
+
+
              })
              .catch((error) => {
                 console.log(error);
