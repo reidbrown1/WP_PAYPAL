@@ -1,8 +1,8 @@
 # syntax=docker/dockerfile:1
 
-FROM node:18-alpine
+FROM node:12
 WORKDIR /app
 COPY . .
 RUN npm install
 CMD ["node", "src/index.js"]
-EXPOSE 3099
+EXPOSE 5000
