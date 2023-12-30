@@ -16,15 +16,26 @@ admin.initializeApp();
 
 exports.purchaseCompleted = functions.https.onCall((data) => {
     const userID = data.userID;
-    const amountPurchased = data.amount;
+    const amountPurchased = parseInt(data.amount, 10);
 
     console.log(userID);
     console.log(amountPurchased);
 
     var db = admin.firestore();
     var docRef = db.collection('users').doc(userID);
-    return docRef.update({
-      PoolCoins: amountPurchased
+
+    return db.runTransaction((transaction) => {
+        return transaction.get(docRef).then((doc) => {
+            if (!doc.exists) {
+                throw "Document does not exist!";
+            }
+
+            // Compute new amount of PoolCoins
+            var newAmount = doc.data().PoolCoins + amountPurchased;
+
+            // Update Firestore document
+            transaction.update(docRef, { PoolCoins: newAmount });
+        });
     });
 });
 

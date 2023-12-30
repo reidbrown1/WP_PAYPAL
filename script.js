@@ -32,7 +32,7 @@ let alerts = document.getElementById("alerts");
 
 //PayPal Code
 //https://developer.paypal.com/sdk/js/configuration/#link-queryparameters
-url_to_head(paypal_sdk_url + "?client-id=" + client_id + "&enable-funding=venmo" + "&intent=" + intent)
+url_to_head(paypal_sdk_url + "?client-id=" + client_id + "&enable-funding=venmo&currency=" + currency + "&intent=" + intent)
 .then(() => {
     //Handle loading spinner
     document.getElementById("loading").classList.add("hide");
