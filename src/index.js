@@ -138,8 +138,9 @@ function get_access_token() {
 }
 
 app.listen(port, () => {
-    console.log(`Server listening at https://wppaypal-zuj4eapv2q-ue.a.run.app/`)
+    console.log(`Server listening on port ${port}`)
 })
+
 
 
 

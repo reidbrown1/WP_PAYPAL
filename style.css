@@ -10,7 +10,7 @@
 }
 
 .spinner {
-    border: 8px solid rgba(0, 0, 0, 0.1);
+    border: 8px solid white;
     border-top-color: lightblue;
     border-radius: 50%;
     width: 50px;
@@ -23,3 +23,13 @@
         transform: rotate(360deg);
     }
 }
+
+body {
+    background-color: white;
+    width: 375px;
+    margin: 0 auto;
+  }
+
+  #payment_options {
+    padding-top: 20px; /* adjust as needed */
+  }
